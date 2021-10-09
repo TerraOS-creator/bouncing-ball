@@ -675,7 +675,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 1fe8d361e8c150540a16cb03b3999ba7, type: 2}
@@ -711,8 +711,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa68b7644a7f4e45889f2f719b0d3b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xInitialForce: 100
-  yInitialForce: 100
+  upButton: 119
+  downButton: 115
+  rightButton: 100
+  leftButton: 97
+  speed: 10
 --- !u!1 &2017849972
 GameObject:
   m_ObjectHideFlags: 0

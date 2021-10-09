@@ -9,6 +9,8 @@ public class BallMovement : MonoBehaviour
     public KeyCode rightButton = KeyCode.D;
     public KeyCode leftButton = KeyCode.A;
     public float speed = 10.0f;
+    private Vector2 direction;
+    private Vector3 mousePosition;
     private Rigidbody2D rigidBody2D; 
     // Start is called before the first frame update
     void Start()
@@ -19,27 +21,18 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         Vector2 velocity = rigidBody2D.velocity;
-        if (Input.GetKey(upButton))
+
+        rigidBody2D.velocity = velocity;
+
+        if (Input.GetMouseButton(0))
         {
-            velocity.y = speed;
-        }  
-        else if (Input.GetKey(downButton))
-        {
-            velocity.y = -speed;
-        }
-        else if (Input.GetKey(leftButton))
-        {
-            velocity.x = -speed;
-        }
-        else if (Input.GetKey(rightButton))
-        {
-            velocity.x = speed;
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            direction = (mousePosition - transform.position).normalized;
+            rigidBody2D.velocity = new Vector2(direction.x * speed, direction.y * speed);
         }
         else
         {
-            velocity.y = 0.0f;
+            rigidBody2D.velocity = Vector2.zero;
         }
-
-        rigidBody2D.velocity = velocity;
     }
 }
