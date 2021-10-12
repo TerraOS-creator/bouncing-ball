@@ -8,7 +8,7 @@ public class BallMovement : MonoBehaviour
     public KeyCode downButton = KeyCode.S;
     public KeyCode rightButton = KeyCode.D;
     public KeyCode leftButton = KeyCode.A;
-    public float speed = 10.0f;
+    public float speed = 100.0f;
     private Vector2 direction;
     private Vector3 mousePosition;
     private Rigidbody2D rigidBody2D; 
