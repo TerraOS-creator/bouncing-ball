@@ -61,9 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BallMovement.cs" />
-    <Compile Include="Assets\Scripts\ScoreController.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\GameFlowManager.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\ScoreData.cs" />
+    <Compile Include="Assets\Scripts\ScoreManage.cs" />
+    <Compile Include="Assets\Scripts\ScoreManager1.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Scripts\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\UIGameOver.cs" />
+    <Compile Include="Assets\Scripts\UIScore.cs" />
+    <Compile Include="Assets\Scripts\UITime.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:/Bryant/Project/Unity/Bouncing Ball/bouncing-ball/Bouncing Ball/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

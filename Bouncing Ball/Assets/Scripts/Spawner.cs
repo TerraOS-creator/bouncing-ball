@@ -4,75 +4,54 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameFlowManager gf;
     private Rigidbody2D rb;
-    private float dirX, dirY, moveSpeed;
     public Transform[] Spawnpoints;
-    public GameObject[] enemy;
-
+    public float timeRemaining = 10;
+    public int counter = 0;
     [SerializeField]
-    private GameObject Obstacle;
+    private GameObject enemy;
 
-    public Vector2 center;
-    public Vector2 size;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveSpeed = 50.0f;
-        spawn();
+            
+        Spawn();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //int randspawn = Random.Range(0, Spawnpoints.Length);
-        //int randenemy = Random.Range(0, enemy.Length);
-        //Instantiate(enemy[randenemy], Spawnpoints[randspawn].position, Spawnpoints[randspawn].rotation);
-        dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        dirY = Input.GetAxisRaw("Vertical") * moveSpeed;
-        
-    }
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(dirX, dirY);
-    }
 
-    private void spawn()
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            Spawn();
+        }
+        else if (timeRemaining == 0)
+        {
+            gf.GameOver();
+        }
+
+    }
+    public void Spawn()
     {
         bool obstaclespawn = false;
-
+        
+        if (counter < 7) {
         while (!obstaclespawn)
         {
-            int count = 0;
-            if (count > 6)
-            {
-                break;
-            }
-            else { 
-            Vector3 hexagonplace = new Vector3(Random.Range(-7f, 7f), Random.Range(-3f, 3f), 0f);
-            if ((hexagonplace - transform.position).magnitude < 3)
-            {
-                continue;
-            }
-            else
-            {
-                Instantiate(Obstacle, hexagonplace, Quaternion.identity);
+            
+                Vector3 hexagonplace = new Vector3(Random.Range(-7f, 7f), Random.Range(-3f, 3f), 0f);           
+                Instantiate(enemy, hexagonplace, Quaternion.identity);
                 obstaclespawn = true;
-            }
-            count++;
+                counter++;
+            
+                }
         }
+           
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
-        spawn();
     }
 
-    public void OnDrawGizmosSelected()
-    {
-        Vector2 areaStartPosition = transform.position;
-        Vector2 areaEndPosition = transform.position;
-        
-    }
-}
+
